@@ -3,10 +3,8 @@ import { browserHistory } from 'react-router'
 
 export default React.createClass({
 	toDate: function(e){
-		console.log(1);
-		console.log(e.target.value)
 		let dateArr = e.target.value.split('-')
-		console.log(dateArr)
+		// console.log(dateArr)
 		const path = '/'+dateArr[0]+'/'+dateArr[1]+'/'+dateArr[2];
 		console.log(path)
 		browserHistory.push(path)

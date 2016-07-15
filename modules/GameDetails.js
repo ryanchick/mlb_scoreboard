@@ -1,22 +1,21 @@
 import React from 'react'
+import { browserHistory } from 'react-router';
 const BASE_URL = 'http://gd2.mlb.com/components/game/mlb/';
 
 export default React.createClass({
   getInitialState(){
     return {
-      game:[],
       boxscore:{},
       linescore:[
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      {away:'-',home:'-'},
-      ],
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'},
+        {away:'-',home:'-'}],
       totals:{away:'-',home:'-'}
     }
   },
@@ -24,16 +23,15 @@ export default React.createClass({
     this.getGames();
   },
 
-  componentDidUpdate (prevProps) {
-    let oldDate = prevProps.params.month + prevProps.params.day
-    let newDate = this.props.params.month + this.props.params.day
+  componentWillUpdate (prevProps) {
+    let oldDate = prevProps.params.year + prevProps.params.month + prevProps.params.day
+    let newDate = this.props.params.year + this.props.params.month + this.props.params.day
     // console.log(oldDate)
     // console.log(newDate)
     if (newDate !== oldDate)
       this.getGames();
     // console.log(BASE_URL+'year_'+this.props.params.year+'/month_'+this.props.params.month+'/day_'+this.props.params.day+'/master_scoreboard.json')
-  },
-
+  },  
   componentWillUnmount () {
     this.serverRequest.abort();
   },
@@ -47,13 +45,14 @@ export default React.createClass({
         linescore:result.data.boxscore.linescore.inning_line_score,
         totals:{home:result.data.boxscore.linescore.home_team_runs,away:result.data.boxscore.linescore.away_team_runs}
       })
-      console.log('state',this.state);
+      // console.log('state',this.state);
     })
   },
   render() {
-  	console.log(this.state)
+  	console.log('renderstate',this.state)
     return (
       <div>
+        <button className='btn btn-primary' onClick={browserHistory.goBack}>Back</button>
         <h2>{this.state.boxscore.away_fname} at {this.state.boxscore.home_fname}</h2>
         <table className='table'>
         	<tbody>
