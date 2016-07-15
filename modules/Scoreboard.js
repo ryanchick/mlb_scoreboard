@@ -16,10 +16,10 @@ export default React.createClass({
     return (
       <div>
       	<label>Date: </label>
-        <input type="date" ref={node => {
-          this.input = node;
-        }} onChange={this.toDate} 
-        defaultValue = {currentDate}/>
+        <input type="date" 
+          ref={node => {this.input = node;}} 
+          onChange={this.toDate} 
+          defaultValue = {currentDate}/>
         {this.props.children}
       </div>
     )

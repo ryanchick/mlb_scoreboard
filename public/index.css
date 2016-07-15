@@ -1,3 +1,8 @@
-.active{
-	color:green;
+.gamesTable td{
+	width:20%;
 }
+
+.gamesTable td:first-child{
+	width:60%;
+}
+

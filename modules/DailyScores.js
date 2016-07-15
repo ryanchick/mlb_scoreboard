@@ -19,7 +19,6 @@ export default React.createClass({
     console.log('new',newDate)
     if (newDate !== oldDate)
       this.getGames(nextProps.params.year,nextProps.params.month,nextProps.params.day);
-    // console.log(BASE_URL+'year_'+this.props.params.year+'/month_'+this.props.params.month+'/day_'+this.props.params.day+'/master_scoreboard.json')
   },
 
   componentWillUnmount () {
@@ -109,7 +108,7 @@ const Game = React.createClass({
       }
       return(
         <li className='col-xs-6 list-group-item' onClick={this.handleClick}>
-          <table className='table'>
+          <table className='table gamesTable'>
             <tbody>
             <tr>
               <th>{this.props.game.status.status}</th>

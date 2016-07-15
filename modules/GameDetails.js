@@ -22,16 +22,6 @@ export default React.createClass({
   componentDidMount(){
     this.getGames();
   },
-
-  componentWillUpdate (prevProps) {
-    let oldDate = prevProps.params.year + prevProps.params.month + prevProps.params.day
-    let newDate = this.props.params.year + this.props.params.month + this.props.params.day
-    // console.log(oldDate)
-    // console.log(newDate)
-    if (newDate !== oldDate)
-      this.getGames();
-    // console.log(BASE_URL+'year_'+this.props.params.year+'/month_'+this.props.params.month+'/day_'+this.props.params.day+'/master_scoreboard.json')
-  },  
   componentWillUnmount () {
     this.serverRequest.abort();
   },
@@ -95,7 +85,6 @@ export default React.createClass({
         		<td>{this.state.linescore[8].home}</td>
         		<th>{this.state.totals.home}</th>
         	</tr>
-
         	</tbody>
         </table>
       </div>
